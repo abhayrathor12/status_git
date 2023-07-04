@@ -1,0 +1,195 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% comment %} <meta http-equiv="X-UA-Compatible" content="IE=edge"> {% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    {% comment %} <meta http-equiv="refresh" content="10"> {% endcomment %}
+    {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% endcomment %}
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/report.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+  
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    {% comment %} <link rel="stylesheet" href="demo.css"> {% endcomment %}
+    
+    <title>Dashboard Sidebar Menu</title> 
+    <style>
+    </style>   
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'images/logo-.png'%}" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">TechnoViz </span>
+                    <span class="profession">AUTOMATION</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'StatusPageFunc' %}">
+                            <i class='bx bx-chart icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'AnalyticsFunc' %}">
+                            <i class='bx bx-bar-chart icon'></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'ReportPageFunc' %}">
+                            <i class='bx bxs-file-pdf icon' ></i>
+                            <span class="text nav-text">Create Report</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'Emailfunc' %}">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Email</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="https://technovizautomation.com/">
+                            <i class='bx bx-question-mark icon' ></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+
+                    
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+         
+        </div>
+
+    </nav>
+ 
+
+    <section class="home">
+        <div class="report">  
+            <form method="POST" action="{% url 'ReportFunc' %}" >
+                            {% csrf_token %}
+                            <div class="seven">
+                                <h1>Report</h1>
+                              </div>
+                              {% comment %} <div class="twelve">
+                                <h1>Report</h1>
+                              </div> {% endcomment %}
+                            <select name="deviceselection" id="myList2" onchange="select1">
+                                <option> Select Device </option>
+                                <option value="device1" > Hair pin expension </option>
+                                <option value="device2"> Horizonal </option>
+                                <option value="device3"> Fin press 5mm </option>
+                                <option value="device4" > Fin press 5mm </option>
+                                <option value="device5"> Vertical expension </option>
+                                <option value="device6"> Hair pin length </option>
+                                <option value="device7"> Vertical expension 2 </option>
+                            </select>
+                            <br>  
+                            <br>
+                            <input  type="radio" name="name1"  value="valu1" onclick="disableFieldsFirst(false)">
+                            <select name="start2" id="myList" onchange="report()">
+                                <option> SELECT </option>
+                                <option value="week" > Last One Week </option>
+                                <option value="month"> Last 1 Month </option>
+                                <option value="half_year"> Last 6 Month </option>
+                                <option value="year"> Last 12 Month </option>
+                            </select>
+                            <br>
+                            <br>
+
+                            <input  type="radio" name="name1"  value="valu2" onclick="disableFieldsFirst(true)">
+                            <label for="report">Start Date:</label>
+                            <input type="date" name="start" id="startinput">   
+                            <br>
+                            <lable class="to">to: &nbsp; &nbsp;</lable>
+                            <br>
+                            <label id="end" for="report">End Date:</label>
+                            <input type="date" name="end" id="endinput" > 
+                            <br>
+                            
+                            <br> 
+                            <input type="submit" id="but" value="View Report" ></button>
+                        </form>
+            </div>
+            <div class="totaltime">  
+                <form method="POST" action="{% url 'TotaltimeFunc' %}" >
+                                {% csrf_token %}
+                                <div class="seven">
+                                  </div>
+                                
+                                <br>
+                                <br>
+                                <select name="deviceselection" id="myList2" onchange="select1">
+                                    <option> Select Device </option>
+                                    <option value="device1" > Hair pin expension </option>
+                                    <option value="device2"> Horizonal </option>
+                                    <option value="device3"> Fin press 5mm </option>
+                                    <option value="device4" > Fin press 5mm </option>
+                                    <option value="device5"> Vertical expension </option>
+                                    <option value="device6"> Hair pin length </option>
+                                    <option value="device7"> Vertical expension 2 </option>
+                                </select>
+                                <br>
+                                <br>
+    
+                                
+                                <label for="report">Start Date:</label>
+                                <input type="date" name="start" id="startinput">   
+                                <br>
+                                <lable class="to">to: &nbsp; &nbsp;</lable>
+                                <br>
+                                <label id="end" for="report">End Date:</label>
+                                <input type="date" name="end" id="endinput" > 
+                                <br>
+                                
+                                <br> 
+                                <h4> Total Time is: &nbsp;  {{ total_duration }}
+                                {% comment %} <input type="text" id="show" value={{ total_duration }}>  {% endcomment %}
+                                <br>
+                                <br>
+                                <input type="submit" id="but" value="View Report" ></button>
+                            </form>
+                </div>
+
+    </section>
+
+        
+
+  </script>
+
+    <script src="{% static 'js/report.js' %}"></script></body>
+</html>

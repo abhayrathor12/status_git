@@ -1,0 +1,298 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Analytics.css' %}">
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>Dashboard Sidebar Menu</title> 
+ 
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'images/logo-.png'%}" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">TechnoViz </span>
+                    <span class="profession">AUTOMATION</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'StatusPageFunc' %}">
+                            <i class='bx bx-chart icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'AnalyticsFunc' %}">
+                            <i class='bx bx-bar-chart icon'></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'ReportPageFunc' %}">
+                            <i class='bx bxs-file-pdf icon' ></i>
+                            <span class="text nav-text">Create Report</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'Emailfunc' %}">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Email</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="https://technovizautomation.com/">
+                            <i class='bx bx-question-mark icon' ></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+                   
+
+                    
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+         
+        </div>
+
+    </nav>
+    <section class="home">
+        <div class="timediv">
+            <h3>device 1 off time is : {{ time_difference_minutes_false }} </h3>
+            <h3>device 1 On time is : {{ time_difference_minutes }}</h3>
+            <br>
+            <input type=text value={{ time_difference_minutes_false }}>Device 1 Off time
+            <br>
+            <input type=text value={{ time_difference_minutes }}>Device 1 On time
+        </div>    
+        <div class="box">
+            <div class="apexchart1">
+            </div>
+        </div>
+        {% comment %} <div class="box2">
+            <div class="apexchart2">
+            </div>
+        </div> {% endcomment %}
+    </section>
+    <script>
+       firstdata = {{ time_difference_minutes_false }}
+       seconddate = {{ time_difference_minutes }} 
+       data8193false = {{ time_difference_minutes_false_8193 }}    
+       date8193 = {{ time_difference_minutes_8193 }}
+       data8194false = {{ time_difference_minutes_false_8194 }}    
+       date8194 = {{ time_difference_minutes_8194 }}
+       data8195false = {{ time_difference_minutes_false_8195 }}    
+       date8195 = {{ time_difference_minutes_8195 }}
+       data8196false = {{ time_difference_minutes_false_8196 }}    
+       date8196 = {{ time_difference_minutes_8196 }}
+       data8197false = {{ time_difference_minutes_false_8197 }}    
+       date8197 = {{ time_difference_minutes_8197 }}
+       data8198false = {{ time_difference_minutes_false_8198 }}    
+       date8198 = {{ time_difference_minutes_8198 }}
+
+       var options = {
+          colors: ['#ff0000', '#008000'],
+          series: [{
+              name: 'OFF Time',
+              data: [firstdata ,data8193false,data8194false,data8195false,data8196false,data8197false,data8198false,]
+          }, {
+              name: 'ON Time',
+              data: [seconddate,date8193,date8194,date8195,date8196,date8197,date8198,]
+          }],
+          chart: {
+              type: 'bar',
+              height: 350,
+              animations: {
+                enabled: false 
+              },
+          },
+          plotOptions: {
+              bar: {
+                  horizontal: false,
+                  columnWidth: '25%',
+                  endingShape: 'rounded'
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          stroke: {
+              show: true,
+              width: 25,
+              colors: ['transparent']
+          },
+          xaxis: {
+              categories: [['Hair','pine', 'xpension'], 'Horizonal',['Fin', 'press', '5mm'],['Fin' ,'press' ,'5mm'],['Vertical' ,'expension'],['Hair' ,'pin' ,'length'],['Vertical', 'expension 2']],
+              labels: {
+                show:true,
+                rotate: 0,
+                style: {
+                    colors: 'white',
+                    fontSize: '12px'
+                  },
+              }
+          },
+          grid: {
+            show: true
+          },
+          yaxis: {
+              title: {
+                  text: 'Time Difference'
+              }
+          },
+          fill: {
+              opacity: 1,
+              followCursor: false,
+          },
+          tooltip: {
+              theme: 'dark',
+              y: {
+                formatter: function (val) {
+                    if (val >= 60) {
+                        var hours = Math.floor(val / 60);
+                        var minutes = val % 60;
+                        return hours + ' Hours ' + minutes + ' Minutes';
+                    } else {
+                        return val + ' minutes';
+                    }
+                }
+            }
+          }
+      };
+
+      var chart = new ApexCharts(document.querySelector('.apexchart1'), options);
+      chart.render();
+
+
+
+
+
+      firstdata = {{ time_difference_minutes_false }}
+       seconddate = {{ time_difference_minutes }} 
+       data8193false = {{ time_difference_minutes_false_8193 }}    
+       date8193 = {{ time_difference_minutes_8193 }}
+       data8194false = {{ time_difference_minutes_false_8194 }}    
+       date8194 = {{ time_difference_minutes_8194 }}
+       data8195false = {{ time_difference_minutes_false_8195 }}    
+       date8195 = {{ time_difference_minutes_8195 }}
+       data8196false = {{ time_difference_minutes_false_8196 }}    
+       date8196 = {{ time_difference_minutes_8196 }}
+       data8197false = {{ time_difference_minutes_false_8197 }}    
+       date8197 = {{ time_difference_minutes_8197 }}
+       data8198false = {{ time_difference_minutes_false_8198 }}    
+       date8198 = {{ time_difference_minutes_8198 }}
+
+       var options = {
+          colors: ['#ff0000', '#008000'],
+          series: [{
+              name: 'OFF Time',
+              data: [firstdata ,data8193false,data8194false,data8195false,data8196false,data8197false,data8198false]
+          }, {
+              name: 'ON Time',
+              data: [seconddate,date8193,date8194,date8195,date8196,date8197,date8198]
+          }],
+          chart: {
+              type: 'bar',
+              height: 350,
+              animations: {
+                enabled: false 
+              },
+          },
+          plotOptions: {
+              bar: {
+                  horizontal: false,
+                  columnWidth: '25%',
+                  endingShape: 'rounded'
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          stroke: {
+              show: true,
+              width: 25,
+              colors: ['transparent']
+          },
+          xaxis: {
+              categories: [['Hair','pine', 'xpension'], 'Horizonal',['Fin', 'press', '5mm'],['Fin' ,'press' ,'5mm'],['Vertical' ,'expension'],['Hair' ,'pin' ,'length'],['Vertical', 'expension 2']],
+              labels: {
+                show:true,
+                rotate: 0,
+                style: {
+                    colors: 'white',
+                    fontSize: '12px'
+                  },
+              }
+          },
+          grid: {
+            show: true
+          },
+          yaxis: {
+              title: {
+                  text: 'Time Difference'
+              }
+          },
+          fill: {
+              opacity: 1,
+              followCursor: false,
+          },
+          tooltip: {
+              theme: 'dark',
+              y: {
+                formatter: function (val) {
+                    if (val >= 60) {
+                        var hours = Math.floor(val / 60);
+                        var minutes = val % 60;
+                        return hours + ' Hours ' + minutes + ' Minutes';
+                    } else {
+                        return val + ' minutes';
+                    }
+                }
+            }
+          }
+      };
+
+      var chart = new ApexCharts(document.querySelector('.apexchart2'), options);
+      chart.render();
+     </script>
+
+     <script src="{% static 'js/Analytics.js' %}"></script>
+</body>
+</html>

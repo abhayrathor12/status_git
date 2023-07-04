@@ -1,0 +1,156 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% comment %} <meta http-equiv="refresh" content="5">  {% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% comment %}
+    <meta http-equiv="refresh" content="10"> {% endcomment %}
+    {% comment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% endcomment %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Email.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    {% comment %}
+    <link rel="stylesheet" href="demo.css"> {% endcomment %}
+
+    <title>Dashboard Sidebar Menu</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'images/logo-.png'%}" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">TechnoViz </span>
+                    <span class="profession">AUTOMATION</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'StatusPageFunc' %}">
+                            <i class='bx bx-chart icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'AnalyticsFunc' %}">
+                            <i class='bx bx-bar-chart icon'></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'ReportPageFunc' %}">
+                            <i class='bx bxs-file-pdf icon'></i>
+                            <span class="text nav-text">Create Report</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'Emailfunc' %}">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Email</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="https://technovizautomation.com/">
+                            <i class='bx bx-question-mark icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <section class="home">
+        <div class="addemail">
+            <form method="POST" >
+                    {% csrf_token %}
+                    <label for="fname">Email :</label>
+                    <input  type=Email id="itag" name="Email" >
+                    <br>
+                
+                    
+                    <input type="submit" id="but" value="ADD+" ></button>
+                </form>
+                <br>
+            </div>
+            <div class="emailtab">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Remove</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            {% for j in EmailData %}
+                            <tr>
+                            <td>{{j.EmailInModel}}</td>
+                            {% comment %} <td><button type="submit" id="update" class="for_tag" class="btn btn-primary save-btn"><a href="{% url 'update_tab' id %}">Update</a>...</button></td> {% endcomment %}
+                            {% comment %} <td>Delete</button></td> {% endcomment %}
+                            <td class="delbut"><a href="{% url 'deleteemail' j.id %}">Remove</a></button></td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}                                                                                                                                                          
+                    </table>
+                </fieldset>
+                </div> 
+
+
+       
+        </div>
+
+    </section>
+
+    </script>
+
+    <script src="{% static 'js/Email.js' %}"></script>
+</body>
+
+</html>

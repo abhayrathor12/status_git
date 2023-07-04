@@ -1,0 +1,346 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% comment %} <meta http-equiv="refresh" content="5">  {% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% comment %}
+    <meta http-equiv="refresh" content="10"> {% endcomment %}
+    {% comment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% endcomment %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/status.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    {% comment %}
+    <link rel="stylesheet" href="demo.css"> {% endcomment %}
+
+    <title>Dashboard Sidebar Menu</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'images/logo-.png'%}" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">TechnoViz </span>
+                    <span class="profession">AUTOMATION</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'StatusPageFunc' %}">
+                            <i class='bx bx-chart icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'AnalyticsFunc' %}">
+                            <i class='bx bx-bar-chart icon'></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'ReportPageFunc' %}">
+                            <i class='bx bxs-file-pdf icon'></i>
+                            <span class="text nav-text">Create Report</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'Emailfunc' %}">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Email</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="https://technovizautomation.com/">
+                            <i class='bx bx-question-mark icon'></i>
+                            <span class="text nav-text">About Us</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <section class="home">
+        <div class="fordecleration">
+            <span class="spandeceleration">&#x1F7E9;</span> ON
+            <br>
+            <span class="spandeceleration">&#x1F7E5;</span> OFF
+
+
+        </div>
+        <div class="dashdiv">
+            <h4 class="coil">Coil Shop 1</h4>
+            <div class="grid-5-by-5">
+                <div class="item">
+                    {% if ReadTagStatusone.0 %}
+                    <span class="span1">&#x1F7E9;</span> <!-- Status is True -->
+                    {% comment %} <span class="span1" style="font-size: 2em;">&#x1F7E9;</span> {% endcomment %}
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span> <!-- Status is False -->
+                    {% endif %}
+                    <h4>Hair pin expension<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatustwo.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Horizonal<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatusthree.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Fin press 5mm<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatusfour.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Fin press 5mm<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatusfive.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Vertical expension<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatussix.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Hair pin length<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatusseven.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Vertical expension 2<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Dry oven<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Auto Blazer<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Bending 70<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Helium testing<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Coil bendor<h4>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="dashdiv2">
+            <h4 class="coil">Coil Shop 2</h4>
+            <div class="grid-5-by-55">
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Hair bender<h4>
+                </div>
+
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Cutter <h4>
+                </div>
+
+            </div>
+        </div>
+        <div class="dashdiv3">
+            <h4 class="coil">LC Shop</h4>
+            <div class="grid-5-by-555">
+
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Device 15<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Device 16<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>High pressure <h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Vaccume pump<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Gas charging<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>EST panel<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4> Vaccume pump line <h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Device 22<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Device 23<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    {% else %}
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Device 24<h4>
+                </div>
+                <div class="item">
+                    {% if ReadTagStatuseight.0 %}
+                    <span class="span1">&#x1F7E9;</span>
+                    <span class="span1">&#x1F7E5;</span>
+                    {% endif %}
+                    <h4>Device 25<h4>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    </script>
+
+    <script src="{% static 'js/status.js' %}"></script>
+</body>
+
+</html>
